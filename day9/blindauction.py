@@ -13,7 +13,8 @@ while True:
 
 for key in auction_bids:
     # if key != "maxbid":
-        if auction_bids[key]>auction_bids["maxbid"]["bid"]:
+        # if auction_bids[key]>auction_bids["maxbid"]["bid"]:
+        if auction_bids[key]>max_bid:
             # auction_bids["maxbid"]["name"] = key
             max_bidder = key
             # auction_bids["maxbid"]["bid"] = auction_bids[key]
