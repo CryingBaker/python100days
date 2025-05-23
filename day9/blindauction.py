@@ -10,6 +10,7 @@ while True:
     doContinue = input("Are there any more bidders? Type 'yes' or 'no': ")
     if doContinue == 'no':
         break
+    print("\n"*100)
 
 for key in auction_bids:
     # if key != "maxbid":
