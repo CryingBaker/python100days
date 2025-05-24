@@ -24,17 +24,26 @@ operations = {
 }
 
 def calculator(operation,num1,num2):
-    return f"{num1} {operation} {num2} = {operations[operation](num1,num2)}"
+    """Returns a string and a value after calculating the answer in the format string : number1 (operation) number2 = (answer), value: answer"""
+    answer = operations[operation](num1,num2)
+    return f"{num1} {operation} {num2} = {answer}",answer
 
 doContinue = ""
+prevAns = 0
 
 while True:
     print(logo)
     print("Welcome to the Calculator")
-    num1 = int(input("Enter the first number:\n"))
+    if doContinue != "yes":
+        num1 = int(input("Enter the first number:\n"))
+    else:
+        print(f"Number 1: {num1}")
     num2 = int(input("Enter the second number:\n"))
     operation = input("Enter an operation to perform ('+' for addition, '-' for subtraction, '*' for multiplication, '/' for division):\n")
-    print(calculator(operation,num1,num2))
-    doContinue = input("Do you want to use the calculator again? Type 'yes' or 'no':").lower()
+    output,prevAns = calculator(operation,num1,num2)
+    print(output)
+    doContinue = input("Do you want to use the calculator again? Type 'yes' to keep the answer or 'y' to continue without storing answer or 'no':").lower()
     if doContinue == "no":
         break
+    elif doContinue == "yes":
+        num1 = prevAns
