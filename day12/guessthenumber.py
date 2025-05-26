@@ -11,7 +11,7 @@ HARD_DIFFICULTY = 5
 EASY_DIFFICULTY = 10
 
 def choose_number():
-    number = random.randint(1,101)
+    number = random.randint(1,100)
     return number
 
 def eval_guess(guess,number):
