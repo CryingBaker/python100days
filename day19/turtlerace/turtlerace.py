@@ -18,7 +18,7 @@ def create_turtles(x):
         color = random.choice(colors)
         turtle_colors.append(color)
         colors.remove(color)
-        newturtle.color = newturtle.color(color)
+        newturtle.color(color)
         newturtle.penup()
         newturtle.speed("fastest")
         turtles.append(newturtle)
