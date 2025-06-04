@@ -1,14 +1,18 @@
 import time
 import turtle as ttl
 from snake import Snake
+from food import Food
+from score import Score
 
 def game():
     screen = ttl.Screen()
-    snake = Snake(screen)
+    food = Food()
+    score = Score()
+    snake = Snake(screen,food,score)
     snake.create_snake()
     screen.update()
     screen.tracer(0)
-    screen.screensize(canvheight=600,canvwidth=600)
+    screen.screensize(canvheight=650,canvwidth=650)
     screen.title("Snake Game")
     screen.bgcolor("black")
     screen.listen()
