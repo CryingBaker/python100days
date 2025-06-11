@@ -8,8 +8,8 @@ RED = "#e7305b"
 GREEN = "#9bdeac"
 YELLOW = "#f7f5dd"
 FONT_NAME = "Courier"
-WORK_MIN = [0,0,10]
-SHORT_BREAK_MIN = [0,0,5]
+WORK_MIN = [0,25,0]
+SHORT_BREAK_MIN = [0,5,0]
 LONG_BREAK_MIN = [0,20,0]
 
 time = []
@@ -27,13 +27,13 @@ def start_timer():
     global next
     print(time)
     if type == "work":
-        label.config(fg = GREEN)
+        label.config(foreground = GREEN)
         label.config(text = "Timer")
     elif type == "short-break":
-        label.config(fg = PINK)
+        label.config(foregrounf = PINK)
         label.config(text="Break")
     elif type == "long-break":
-        label.config(fg = RED)
+        label.config(foreground = RED)
         label.config(text="Break")
     if pause == True:
         return
@@ -53,6 +53,10 @@ def start_timer():
         if not reset:
             if type == "work":
                 checklist_label.config(text=f"{checklist_label["text"]}✔")
+                if len(checklist_label["text"])%5 == 0:
+                    next = "long-break"
+                else:
+                    next = "short-break"
             temp = type
             type = next
             next = temp
@@ -106,10 +110,12 @@ def clicked_btn2():
     reset = True
     btn_1["text"] = "Start"
     label.config(text = "Timer")
+    label.config(foreground=GREEN)
     type = "work"
     next = "short-break"
     pause = False
     time = [0,0,0]
+    checklist_label.config(text="")
 
 window = Tk()
 window.title("Pomodoro App")
@@ -131,7 +137,6 @@ btn_2 = Button(text="Reset",width =3, border=0,highlightthickness=0,command=clic
 
 checklist_label_text = ""
 checklist_label = Label(text=checklist_label_text,foreground=GREEN,background=YELLOW)
-
 
 label.grid(column=1,row=0)
 canvas.grid(column=1,row=1) 
