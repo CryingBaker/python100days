@@ -3,6 +3,7 @@ import tkinter
 import tkinter.messagebox
 from password_generator import generate_password
 from frequent_email import get_mostfrequent_email
+import pyperclip
 
 DEFAULT_ALPHABETS = 10
 DEFAULT_NUMBERS = 3
@@ -13,8 +14,7 @@ def gen_password():
     password = generate_password(DEFAULT_ALPHABETS,DEFAULT_NUMBERS,DEFAULT_SYMBOLS)
     password_input.delete(0,tkinter.END)
     password_input.insert(0,password)
-    window.clipboard_clear()
-    window.clipboard_append(password)
+    pyperclip.copy(password)
 
 # ---------------------------- SAVE PASSWORD ------------------------------- #
 def save_password():

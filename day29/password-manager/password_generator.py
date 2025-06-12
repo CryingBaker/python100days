@@ -13,13 +13,12 @@ symbols = [
 
 
 def generate_password(no_alphabets,no_numbers,no_symbols):
-    password = ""
+    password = []
     for _ in range(no_alphabets):
-        password += random.choice(alphabets)
+        password.append(random.choice(alphabets))
     for _ in range(no_numbers):
-        password += random.choice(numbers)
+        password.append(random.choice(numbers))
     for _ in range(no_symbols):
-        password += random.choice(symbols)
-    password_list = list(password)
-    random.shuffle(password_list)
-    return "".join(password_list)
+        password.append(random.choice(symbols))
+    random.shuffle(password)
+    return "".join(password)
