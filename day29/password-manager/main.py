@@ -1,5 +1,6 @@
 from tkinter import Tk,PhotoImage,Canvas,Label,Entry,Button
 import tkinter
+import tkinter.messagebox
 from password_generator import generate_password
 from frequent_email import get_mostfrequent_email
 
@@ -17,14 +18,22 @@ def gen_password():
 
 # ---------------------------- SAVE PASSWORD ------------------------------- #
 def save_password():
-    with open("passwords.txt","a") as password_file:
-        website = website_input.get()
-        username = username_input.get()
-        password = password_input.get()
-        password_file.write(f"{website} | {username} | {password} \n")
+    website = website_input.get()
+    username = username_input.get()
+    password = password_input.get()
+    if len(website) <= 0 or len(username)<= 0 or len(password)<=0:
+        tkinter.messagebox.showerror("Empty Fields","Please fill all fields!") 
+    else:
+        if len(password)<8:
+            should_continue = tkinter.messagebox.askokcancel("Are you sure?","Your password is too short!")
+            if should_continue:
+                should_continue = tkinter.messagebox.askokcancel("Are you sure?",f"Details:\nWebsite:{website}\nUsername:{username}\nPassword:{password}\nAre you sure you want to add this password?")
+                if should_continue:
+                    with open("passwords.txt","a") as password_file:
+                        password_file.write(f"{website} | {username} | {password} \n")
+                        tkinter.messagebox.showinfo("Success","Password added successfully!")
         website_input.delete(0,tkinter.END)
         password_input.delete(0,tkinter.END)
-
 
 # ---------------------------- UI SETUP ------------------------------- #
 window = Tk()
