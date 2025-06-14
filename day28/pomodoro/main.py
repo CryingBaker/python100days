@@ -30,7 +30,7 @@ def start_timer():
         label.config(foreground = GREEN)
         label.config(text = "Timer")
     elif type == "short-break":
-        label.config(foregrounf = PINK)
+        label.config(foreground = PINK)
         label.config(text="Break")
     elif type == "long-break":
         label.config(foreground = RED)
