@@ -8,3 +8,5 @@
 /day29/password-manager/passwords.txt
 */*/venv
 /day30/better-password-manager/passwords.json
+*/.env
+*/*/birthdays.csv
